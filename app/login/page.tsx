@@ -3,6 +3,9 @@ import { login } from "@/services/auth.service";
 import { useState } from "react";
 import { Eye, EyeOff, ArrowRight, Zap } from "lucide-react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+
+const router = useRouter();
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
@@ -11,7 +14,8 @@ export default function LoginPage() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  
+const handleSubmit = async (e: React.FormEvent) => {
   e.preventDefault();
   setError("");
   setIsLoading(true);
@@ -22,7 +26,8 @@ export default function LoginPage() {
     setError(error.message);
   } else {
     console.log("Login correcto:", data);
-    // router.push("/dashboard");
+
+    router.replace("/chatmtpe");
   }
 
   setIsLoading(false);
